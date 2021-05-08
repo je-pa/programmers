@@ -1,0 +1,77 @@
+class Solution {
+    public String solution(String new_id) {
+        String answer = "";
+        char[] charArr = new_id.toCharArray();
+
+        int tmp;
+        final int MAX_LENTH =15;
+        final int MIN_LENTH=3;
+        
+        for(int i=0;i<charArr.length;i++){
+            tmp=(int)(charArr[i]);
+            if(tmp>64&&tmp<91){
+                answer+=(char)(tmp+32);
+            }else{
+                answer+=charArr[i];
+            }
+        }
+        
+        charArr=answer.toCharArray();
+        answer="";
+        for(int i=0;i<charArr.length;i++){
+            tmp=(int)charArr[i];
+            if((tmp>96&&tmp<123)||(tmp>47&&tmp<58)
+               ||(charArr[i]=='-')||(charArr[i]=='_')||(charArr[i]=='.')){
+                answer+=charArr[i];
+            }
+        }
+        
+        charArr=answer.toCharArray();
+        answer="";
+        for(int i=0;i<charArr.length;i++){
+            answer+=charArr[i];
+            if(charArr[i]=='.'){
+                for(int j=i+1;j<charArr.length;j++){
+                    if(charArr[j]=='.'){
+                        i++;
+                    }else{
+                        break;
+                    }
+                }
+            }
+        }
+        
+        charArr=answer.toCharArray();
+        int len = charArr.length;
+        
+        answer="";
+        for(int i=(charArr[0]=='.')?1:0 ; i<len-((charArr[len-1]=='.')?1:0) ; i++){
+            answer+=charArr[i];
+        } 
+        
+        charArr=answer.toCharArray();
+        len = charArr.length;
+        if(len==0){
+            answer="a";
+        }else if(len>MAX_LENTH){
+            answer="";
+            for(int i=0;i<MAX_LENTH-((charArr[MAX_LENTH-1]=='.')?1:0);i++){
+                answer+=charArr[i];
+            }
+        }
+        charArr=answer.toCharArray();
+        len = charArr.length;
+        if(len<MIN_LENTH){
+            answer=Character.toString(charArr[0]);
+            if(len==1){
+                answer+=charArr[0];
+                answer+=charArr[0];
+            }else if(len==2){
+                answer+=charArr[1];
+                answer+=charArr[1];
+            }
+        }
+         
+       return answer;
+    }
+}
