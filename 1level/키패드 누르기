@@ -1,0 +1,54 @@
+class Solution {
+    public String solution(int[] numbers, String hand) {
+        String answer = "";
+        int leftLine = checkLine(10);
+        int rightLine = checkLine(12);
+        for(int i =0;i<numbers.length;i++){
+            int n=numbers[i];
+            if(n==1||n==4||n==7){
+                answer+="L";
+                leftLine=checkLine(n);
+            }else if(n==3||n==6||n==9){
+                answer+="R";
+                rightLine=checkLine(n);
+            }else{
+                if(i==0){
+                    answer += ((char)(hand.charAt(0)-32));
+                }else{
+                    if(n==0){
+                        n=11;
+                    }
+                    int middleLine =checkLine(n);
+                    int ld =distance(leftLine,middleLine);
+                    int rd =distance(rightLine,middleLine);
+                    int goMiddle = middleLine+4;
+                    
+                    if(ld<rd){
+                        answer+="L";
+                        leftLine=goMiddle;
+                    }else if(ld>rd){
+                        answer+="R";
+                        rightLine=goMiddle;
+                    }else{
+                        answer += ((char)(hand.charAt(0)-32));
+                        if(hand.equals("left")){
+                            leftLine=goMiddle;
+                        }else{
+                            rightLine=goMiddle;
+                        }
+                    }
+                }
+            }
+        }
+        return answer;
+    }
+    public int checkLine(int n){
+        return (int)((n-1)/3);
+    }
+    public int distance(int handLine , int middleLine){
+        if(handLine>=4){
+            return Math.abs(handLine-4-middleLine);
+        }
+        return Math.abs(handLine-middleLine)+1;
+    }
+}
