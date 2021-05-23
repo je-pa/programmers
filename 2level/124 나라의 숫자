@@ -1,0 +1,40 @@
+class Solution {
+    public String solution(int n) {
+        String answer = "";
+        int count =0;
+        int[] threeArr;
+        int n1=n;
+        StringBuilder strBuf = new StringBuilder();
+        
+        while(n1!=0){
+            count++;
+            n1=(int)n1/3;
+        }
+        threeArr = new int[count];
+        for(int i =0;i<count;i++){
+            threeArr[i]=n%3;
+            n=(int)n/3;
+        }
+        
+        for(int i=0;i<count;i++){
+            if(threeArr[i]!=0){
+                strBuf.insert(0,threeArr[i]);
+            }else{
+                if(i==count-1){
+                    break;
+                }
+                strBuf.insert(0,"4");
+                while(threeArr[i+1]==0){
+                    strBuf.insert(0,"2");
+                    i++;
+                }
+                
+                if(threeArr[i+1]!=0){
+                    threeArr[i+1]-=1;
+                }
+            }
+        }
+        answer=strBuf.toString();
+        return answer;
+    }
+}
