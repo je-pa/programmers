@@ -5,9 +5,7 @@ class Solution {
             sum += x%10;
             x=x/10;
         }
-        boolean answer = (sum!=0&&n%sum==0)?true:false;
-        
-        return answer;
+        return sum!=0 && n%sum==0;
     }
 }
 
