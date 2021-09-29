@@ -29,3 +29,19 @@ class Solution {
 }
 
 //==============================================
+
+import java.util.function.IntConsumer;
+
+class Solution {
+    private int sum =0;
+    public boolean solution(int x) {
+        Integer.toString(x).chars().forEach(c -> {
+                                                        System.out.println(c-'0'+" "+c);
+                                                        //13의 경우 //1 49 //3 51
+            sum += c-'0';
+                                                        System.out.println(sum);
+                                                        //13의 경우 //1 4
+        });
+        return x % sum == 0;
+    }
+}
