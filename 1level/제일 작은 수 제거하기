@@ -92,7 +92,8 @@ import java.util.stream.Collectors;
 
 class Solution {
     public int[] solution(int[] arr) {
-        List<Integer> list = Arrays.stream(arr).boxed().collect(Collectors.toList());
+        List<Integer> list = Arrays.stream(arr).boxed().collect(Collectors.toList()); 
+                                                        //819p( : 필터링 또는 매핑 후 요소들을 수집하는 최종메소드
         Arrays.sort(arr);
         list.remove(list.indexOf(arr[0]));
         if (list.size() <= 0) return new int[]{-1};
