@@ -28,7 +28,7 @@ class Solution {
 
     double i = Math.sqrt(n);
 
-    return Math.floor(i) == i ? (long) Math.pow(i + 1, 2) : -1;
+    return Math.floor(i) == i ? (long) Math.pow(i + 1, 2) : -1; //floor(x) : 내림 그냥 // 소수점이 있는지 확인하는 용도
   }
 }
 
@@ -37,7 +37,7 @@ class Solution {
 class Solution {
   public long solution(long n) {
       if(n==1){
-          return 4;
+          return 4; // (1+1)*(1+1) = 4
       }
       for(long i=2;i<n;i++){
           if(n/i == i && n%i ==0){
