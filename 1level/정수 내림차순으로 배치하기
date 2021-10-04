@@ -1,0 +1,58 @@
+import java.util.Arrays;
+class Solution {
+    public long solution(long n) {
+        String result = "";
+        char[] arr = Long.toString(n).toCharArray();
+        Arrays.sort(arr);
+        for(char i : arr){
+            result = i+result;
+        }
+        return Long.parseLong(result);
+    }
+}//2
+
+//==============================================
+
+import java.util.*;
+
+class Solution {
+    public long solution(long n) {
+        return Long.parseLong(String.valueOf(n).chars().mapToObj(ch -> (char) ch)
+                .sorted(Comparator.reverseOrder())
+                .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
+                .toString());
+    }
+}
+
+//=============================================
+
+import java.util.*;
+
+class Solution {
+  public long solution(long n) {
+        String[] list = String.valueOf(n).split("");
+        Arrays.sort(list);
+
+        StringBuilder sb = new StringBuilder();
+        for (String aList : list) sb.append(aList);
+
+        return Long.parseLong(sb.reverse().toString());
+  }
+}
+
+//===============================================
+
+public class ReverseInt {
+    String res = "";
+    public int reverseInt(int n){
+        res = "";
+        Integer.toString(n).chars().sorted().forEach(c -> res = Character.valueOf((char)c) + res);
+        return Integer.parseInt(res);
+    }
+
+    // 아래는 테스트로 출력해 보기 위한 코드입니다.
+    public static void  main(String[] args){
+        ReverseInt ri = new ReverseInt();
+        System.out.println(ri.reverseInt(118372));
+    }
+}
