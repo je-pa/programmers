@@ -17,10 +17,9 @@ import java.util.*;
 
 class Solution {
     public long solution(long n) {
-        return Long.parseLong(String.valueOf(n).chars().mapToObj(ch -> (char) ch)
-                .sorted(Comparator.reverseOrder())
-                .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
-                .toString());
+        return Long.parseLong(String.valueOf(n).chars().mapToObj(ch -> (char) ch) //mapToObj : 기본형 특화 스트림을 Stream으로 변환해주는 메서드
+                .sorted(Comparator.reverseOrder()) //stream의 sort
+                .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append).toString()); //`IntStream`을`String`으로 인쇄
     }
 }
 
