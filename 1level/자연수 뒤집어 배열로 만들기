@@ -1,0 +1,71 @@
+class Solution {
+    public int[] solution(long n) {
+        int len = Long.toString(n).length();
+        int[] answer = new int[len];
+        for(int i=0;i<len;i++){
+            answer[i]=(int)(n%10);
+            n/=10;
+        }
+        return answer;
+    }
+}//4
+
+//=====================================
+
+class Solution {
+  public int[] solution(long n) {
+      String a = "" + n;
+        int[] answer = new int[a.length()];
+        int cnt=0;
+
+        while(n>0) {
+            answer[cnt]=(int)(n%10);
+            n/=10;
+            System.out.println(n);
+            cnt++;
+        }
+      return answer;
+  }
+}
+
+//=====================================
+
+class Solution {
+  public int[] solution(long n) {
+      String s = String.valueOf(n);
+      StringBuilder sb = new StringBuilder(s);
+      sb = sb.reverse();
+      String[] ss = sb.toString().split("");
+
+      int[] answer = new int[ss.length];
+      for (int i=0; i<ss.length; i++) {
+          answer[i] = Integer.parseInt(ss[i]);
+      }
+      return answer;
+  }
+}
+
+//=====================================
+
+class Solution {
+  public int[] solution(long n) {
+      char[] arr = new StringBuffer(String.valueOf(n)).reverse().toString().toCharArray();
+      int[] answer = new int[arr.length];
+
+      for(int i = 0; i < arr.length; i++){
+          answer[i] = arr[i] - 48;
+      }
+
+      return answer;
+  }
+}
+
+//========================================
+
+import java.util.stream.IntStream;
+
+class Solution {
+    public int[] solution(long n) {
+        return new StringBuilder().append(n).reverse().chars().map(Character::getNumericValue).toArray();
+    }
+}
