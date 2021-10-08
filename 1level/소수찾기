@@ -1,0 +1,47 @@
+// class Solution {
+//     public int solution(int n) {
+//         int answer = 0;
+//         for(int i=5 ; i<=n ; i=i+2){
+//             if(i%3==0) continue;
+//             int x=i/2+1;
+//             for(int j=5 ; j<=x+2 ; j=j+2){
+//                 if(j>x) {answer++; break;}
+//                 if(i%j==0) break;
+//             }
+//         }
+//         return n==2?answer+1:answer+2;
+//     }
+// }
+
+// class Solution {
+//     public int solution(int n) {
+//         int answer = 0;
+//         String str = "3";
+//         for(int i=5 ; i<=n ; i=i+2){
+//             String[] strArr = str.split(" ");
+//             for(int j=0 ; j<=strArr.length ; j++){
+//                 if(j==strArr.length) {answer++; str+=(" "+i); break;}
+//                 if((i%(Integer.parseInt(strArr[j])))==0) break;
+//             }
+//         }
+//         return n==2?answer+1:answer+2;
+//     }
+// }
+
+// class Solution {
+//     public int solution(int n) {
+//         int answer = 0;
+//         StringBuilder str = new StringBuilder("3");
+//         for(int i=5 ; i<=n ; i=i+2){
+//             for(int j=0 ; j<=str.length() ; j++){
+//                 if(j==str.length()) {answer++; str.append(" "+i); break;}
+//                 int num = str.charAt(j)-'0';
+//                 while( str.length()!=j+1 && str.charAt(++j)!=' '){
+//                     num=num*10+(str.charAt(j)-'0');
+//                 }
+//                 if(i%num==0) break;
+//             }
+//         }
+//         return n==2?answer+1:answer+2;
+//     }
+// }
