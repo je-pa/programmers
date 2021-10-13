@@ -1,0 +1,55 @@
+import java.util.Arrays;
+import java.util.Comparator;
+
+class Solution {
+    public int[] solution(int[] weights, String[] head2head) {
+        int n = weights.length;
+        int[] answer = new int[n];
+        int win, battle, bigWin;
+        double[][] result = new double[n][4];
+        for(int i=0; i<n ;i++){
+            win =0; battle=n; bigWin=0;
+            result[i][0]=i+1;
+            result[i][3]=weights[i];
+            for(int j=0 ; j<n ; j++){
+                if(head2head[i].charAt(j)=='N'){
+                    battle-=1;
+                }else if(head2head[i].charAt(j)=='W'){
+                    win++;
+                    if(weights[j]>weights[i]){
+                        bigWin++;
+                    }
+                }
+            }System.out.printf("%d, %d \n",win,battle);
+            
+            result[i][1]= battle!=0 ? (double)win/battle : 0;
+            result[i][2]=bigWin;
+            System.out.printf("%.2f, %.2f, %.2f, %.2f \n",result[i][0],result[i][1],result[i][2],result[i][3]);
+        }
+        
+        Arrays.sort(result, new Comparator<double[]>() {
+            @Override
+            public int compare(double[] o1, double[] o2){
+                if(o1[1]==o2[1]){
+                    if(o1[2]==o2[2]){
+                        if(o1[3]==o2[3]){
+                            return Double.compare(o1[0], o2[0]);//o1[0] - o2[0];
+                        }else{
+                            return Double.compare(o2[3], o1[3]);//o2[3] - o1[3];
+                        }
+                    }else{
+                        return Double.compare(o2[2], o1[2]);//o1[2] - o2[2];
+                    }
+                }else {
+                    return Double.compare(o2[1], o1[1]);//o2[1] - o1[1];
+                }
+            }
+        });
+        System.out.println();
+        for(int i=0; i<n ; i++){
+            answer[i]=(int)result[i][0];
+            System.out.printf("%.2f, %.2f, %.2f, %.2f \n",result[i][0],result[i][1],result[i][2],result[i][3]);
+        }
+        return answer;
+    }
+}
